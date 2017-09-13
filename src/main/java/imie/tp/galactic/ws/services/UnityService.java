@@ -1,7 +1,9 @@
 package imie.tp.galactic.ws.services;
 
 import imie.tp.galactic.ws.core.InMemoryModel;
+import imie.tp.galactic.ws.exceptions.InternalServerException;
 import imie.tp.galactic.ws.model.enums.UnityTypeEnum;
+import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.general.Unity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,19 @@ public class UnityService {
     }
 
     public void createUnityOnPlanet(Long planetId, UnityTypeEnum resource) {
+        Planet p = planetService.findById(planetId);
+        Unity u = null;
+        try {
+            u = resource.getClazz()
+                    .getDeclaredConstructor(Planet.class)
+                    .newInstance(p);
 
+        } catch (ReflectiveOperationException e) {
+            throw new InternalServerException(e);
+        }
+
+        if (u != null) {
+            p.getUnities().add(u);
+        }
     }
 }

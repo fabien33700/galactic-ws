@@ -14,8 +14,9 @@ public class UnityCreationRequest {
         this.unityType = unityType;
     }
 
-    public UnityCreationRequest(UnityTypeEnum unityType) {
+    public UnityCreationRequest() {}
 
+    public UnityCreationRequest(UnityTypeEnum unityType) {
         this.unityType = unityType;
     }
 }

@@ -1,6 +1,10 @@
 package imie.tp.galactic.ws.model.general;
 
+import imie.tp.galactic.ws.model.enums.UnityTypeEnum;
+
 public class UnityType {
+
+    private String unityType;
     
     private int size;
     
@@ -15,6 +19,7 @@ public class UnityType {
     private String name;
 
     public UnityType(Unity unity) {
+        this.unityType = UnityTypeEnum.findByClass(unity.getClass());
         this.size = unity.getSize();
         this.productionDelay = unity.getProductionDelay();
         this.goldCost = unity.getGoldCost();
@@ -45,5 +50,13 @@ public class UnityType {
 
     public String getName() {
         return name;
+    }
+
+    public String getUnityType() {
+        return unityType;
+    }
+
+    public void setUnityType(String unityType) {
+        this.unityType = unityType;
     }
 }
