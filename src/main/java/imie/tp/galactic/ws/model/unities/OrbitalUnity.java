@@ -9,7 +9,8 @@ import imie.tp.galactic.ws.model.general.Unity;
 import imie.tp.galactic.ws.services.TravelService;
 
 public abstract class OrbitalUnity extends Unity {
-	
+
+	private static final long serialVersionUID = 8522474967754431758L;
 	/**
 	 * La vitesse de déplacement de l'unité orbital
 	 */

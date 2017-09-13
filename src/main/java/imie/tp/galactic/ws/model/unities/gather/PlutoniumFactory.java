@@ -9,6 +9,8 @@ import imie.tp.galactic.ws.model.unities.GatherUnity;
 
 public class PlutoniumFactory extends GatherUnity {
 
+	private static final long serialVersionUID = -6285290832039127665L;
+
 	public PlutoniumFactory(Planet planet) {
 		super(
 				GameConstants.PlutoniumFactory.SIZE,

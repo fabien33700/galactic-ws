@@ -13,6 +13,8 @@ import imie.tp.galactic.ws.model.unities.ProductionUnity;
  */
 public class WeaponFactory extends ProductionUnity {
 
+	private static final long serialVersionUID = 7120535558097598902L;
+
 	/**
 	 * {@inheritDoc}
 	 */

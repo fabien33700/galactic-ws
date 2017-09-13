@@ -13,6 +13,8 @@ import imie.tp.galactic.ws.model.unities.ProductionUnity;
  */
 public class SpatialShipyard extends ProductionUnity {
 
+	private static final long serialVersionUID = -6009788203431612297L;
+
 	/**
 	 * {@inheritDoc}
 	 */

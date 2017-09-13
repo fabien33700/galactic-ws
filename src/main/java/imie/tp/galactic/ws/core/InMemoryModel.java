@@ -58,6 +58,8 @@ public class InMemoryModel {
             buildModel();
         }
 
+        logger.info("Chargement du modèle OK");
+
     }
 
     private void buildModel() {

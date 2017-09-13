@@ -20,6 +20,7 @@ import imie.tp.galactic.ws.views.Views;
 
 public abstract class Unity extends Identifiable {
 
+	private static final long serialVersionUID = 6000849228361180483L;
 	/**
 	 * Le nom du type d'unité
 	 */

@@ -14,6 +14,8 @@ import imie.tp.galactic.ws.model.unities.terrestrial.StorageShed;
  */
 public class GoldShed extends StorageShed {
 
+	private static final long serialVersionUID = 5696138022187777598L;
+
 	/**
 	 * {@inheritDoc}
 	 */

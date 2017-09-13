@@ -12,6 +12,8 @@ import imie.tp.galactic.ws.model.general.Unity;
  */
 public abstract class TerrestrialUnity extends Unity {
 
+	private static final long serialVersionUID = 6807876926319353081L;
+
 	/**
 	 * {@inheritDoc}
 	 */

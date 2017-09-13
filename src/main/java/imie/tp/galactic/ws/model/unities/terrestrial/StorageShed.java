@@ -7,7 +7,8 @@ import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.unities.TerrestrialUnity;
 
 public abstract class StorageShed extends TerrestrialUnity {
-	
+
+	private static final long serialVersionUID = 3329508745565124060L;
 	protected ResourceEnum storedResource;
 	
 	protected int storageCapacity;

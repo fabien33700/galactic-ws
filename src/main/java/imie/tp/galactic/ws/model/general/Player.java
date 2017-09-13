@@ -9,6 +9,7 @@ import imie.tp.galactic.ws.views.Views;
 
 public class Player extends Identifiable {
 
+	private static final long serialVersionUID = 1563736634107946033L;
 	@JsonView(Views.Public.class)
 	private String pseudo;
 

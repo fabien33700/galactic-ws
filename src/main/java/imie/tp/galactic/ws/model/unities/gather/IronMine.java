@@ -8,7 +8,9 @@ import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.unities.GatherUnity;
 
 public class IronMine extends GatherUnity {
-	
+
+	private static final long serialVersionUID = -4698530090523945335L;
+
 	public IronMine(Planet planet) {
 		
 		super(

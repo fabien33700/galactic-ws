@@ -7,7 +7,8 @@ import java.io.Serializable;
 
 public abstract class Identifiable implements Serializable{
 
-	private Long id = 0L;
+    private static final long serialVersionUID = -4826997475899993012L;
+    private Long id = 0L;
 
 	@JsonView(Views.Public.class)
 	public Long getId() {

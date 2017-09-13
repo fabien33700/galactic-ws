@@ -7,7 +7,8 @@ import imie.tp.galactic.ws.model.unities.OrbitalUnity;
 import java.time.LocalDateTime;
 
 public class Scout extends OrbitalUnity {
-	
+
+	private static final long serialVersionUID = -1097822128454272077L;
 
 	public Scout(Planet planet) {
 		super(

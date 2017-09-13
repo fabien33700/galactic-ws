@@ -9,6 +9,7 @@ import imie.tp.galactic.ws.model.unities.OrbitalUnity;
 
 public class Cruiser extends OrbitalUnity implements Attacker {
 
+	private static final long serialVersionUID = -6608436045234225196L;
 	private int attack = 0;
 
 	public Cruiser(Planet planet) {

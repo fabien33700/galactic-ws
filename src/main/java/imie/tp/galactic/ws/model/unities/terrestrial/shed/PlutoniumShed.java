@@ -14,6 +14,8 @@ import imie.tp.galactic.ws.model.unities.terrestrial.StorageShed;
  */
 public class PlutoniumShed extends StorageShed {
 
+	private static final long serialVersionUID = 7893481586022676332L;
+
 	/**
 	 * {@inheritDoc}
 	 */

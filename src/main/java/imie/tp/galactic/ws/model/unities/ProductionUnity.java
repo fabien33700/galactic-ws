@@ -12,6 +12,8 @@ import imie.tp.galactic.ws.model.general.Unity;
  */
 public abstract class ProductionUnity extends Unity {
 
+	private static final long serialVersionUID = 4247622680106824000L;
+
 	/**
 	 * {@inheritDoc}
 	 */

@@ -9,6 +9,7 @@ import imie.tp.galactic.ws.model.unities.TerrestrialUnity;
 
 public class MissilesLauncher extends TerrestrialUnity implements Attacker {
 
+	private static final long serialVersionUID = -5116999255937693824L;
 	private int attack;
 
 	public MissilesLauncher(Planet planet) {

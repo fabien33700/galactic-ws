@@ -12,7 +12,8 @@ import imie.tp.galactic.ws.model.general.Unity;
  *
  */
 public abstract class GatherUnity extends Unity {
-	
+
+	private static final long serialVersionUID = 8441395969571686095L;
 	/**
 	 * Type de ressource récoltée
 	 */

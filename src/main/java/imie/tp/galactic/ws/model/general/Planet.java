@@ -7,7 +7,8 @@ import imie.tp.galactic.ws.model.identity.Identifiable;
 import imie.tp.galactic.ws.views.Views;
 
 public class Planet extends Identifiable {
-	
+
+	private static final long serialVersionUID = -1108069485048680486L;
 	/**
 	 * Coordonnée X de la planète dans l'univers
 	 */

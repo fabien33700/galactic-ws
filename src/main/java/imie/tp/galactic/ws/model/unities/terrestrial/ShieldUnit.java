@@ -8,6 +8,8 @@ import imie.tp.galactic.ws.model.unities.TerrestrialUnity;
 
 public class ShieldUnit extends TerrestrialUnity {
 
+	private static final long serialVersionUID = 7958694901175536496L;
+
 	public ShieldUnit(Planet planet) {
 		super(
 				GameConstants.ShieldUnit.SIZE,

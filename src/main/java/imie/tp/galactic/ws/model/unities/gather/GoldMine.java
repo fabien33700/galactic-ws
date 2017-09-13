@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 
 public class GoldMine extends GatherUnity {
 
+	private static final long serialVersionUID = -609827773994919473L;
+
 	public GoldMine(Planet planet) {
 		super(
 				GameConstants.GoldMine.SIZE,

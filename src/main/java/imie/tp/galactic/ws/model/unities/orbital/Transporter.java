@@ -12,7 +12,8 @@ import imie.tp.galactic.ws.model.unities.OrbitalUnity;
  *
  */
 public class Transporter extends OrbitalUnity {
-	
+
+	private static final long serialVersionUID = -8521240325913532678L;
 	/**
 	 * Le volume maximale d'or pouvant être embarqué
 	 */

@@ -9,6 +9,7 @@ import imie.tp.galactic.ws.model.unities.OrbitalUnity;
 
 public class Fighter extends OrbitalUnity implements Attacker {
 
+	private static final long serialVersionUID = 45998512950336197L;
 	private int attack = 0;
 
 	public Fighter(Planet planet) {
