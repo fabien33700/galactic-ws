@@ -1,4 +1,4 @@
-package imie.tp.galactic.ws.model.core;
+package imie.tp.galactic.ws.model.identity;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import imie.tp.galactic.ws.views.Views;
@@ -13,7 +13,7 @@ public abstract class Identifiable {
 	}
 	
 	protected Identifiable() {
-		this.id = IdGenerator.getInstance().registerObject(this);
+		this.id = IdentifierGenerator.getInstance().registerObject(this);
 	}
 
 }

@@ -1,10 +1,10 @@
-package imie.tp.galactic.ws.model.core;
+package imie.tp.galactic.ws.model.identity;
 
 import java.util.HashMap;
 
-public class IdGenerator {
+public class IdentifierGenerator {
 	
-	private static IdGenerator instance = null;
+	private static IdentifierGenerator instance = null;
 	
 	private HashMap<Long, Identifiable> identifiables;
 	
@@ -14,7 +14,7 @@ public class IdGenerator {
 			.max().orElse(0);
 	}
 	
-	private IdGenerator() {
+	private IdentifierGenerator() {
 		this.identifiables = new HashMap<>();
 	}
 
@@ -22,9 +22,9 @@ public class IdGenerator {
 		return identifiables;
 	}
 	
-	public static IdGenerator getInstance() {
+	public static IdentifierGenerator getInstance() {
 		if (instance == null) {
-			instance = new IdGenerator();
+			instance = new IdentifierGenerator();
 		}
 		
 		return instance;

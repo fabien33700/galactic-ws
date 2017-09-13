@@ -1,7 +1,5 @@
-package imie.tp.galactic.ws.model.core;
+package imie.tp.galactic.ws.model.enums;
 
 public enum ResourceEnum {
-	
 	IRON, PLUTONIUM, GOLD;
-
 }

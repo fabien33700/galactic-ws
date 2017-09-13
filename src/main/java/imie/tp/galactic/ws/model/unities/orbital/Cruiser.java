@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 import imie.tp.galactic.ws.model.behaviour.Attacker;
 import imie.tp.galactic.ws.model.constants.GameConstants;
-import imie.tp.galactic.ws.model.core.ResourceEnum;
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.unities.OrbitalUnity;
 

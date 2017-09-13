@@ -2,12 +2,12 @@ package imie.tp.galactic.ws.model.unities;
 
 import java.time.LocalDateTime;
 
-import imie.tp.galactic.ws.model.core.ResourceEnum;
+import imie.tp.galactic.ws.model.enums.ResourceEnum;
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.general.Unity;
 
 /**
- * Classe abstraite repr�sentant une unit� de collecte
+ * Classe abstraite représentant une unité de collecte
  * @author Fabien
  *
  */
@@ -37,7 +37,7 @@ public abstract class GatherUnity extends Unity {
 	}
 
 	protected GatherUnity(int size, int health, Long productionDelay, LocalDateTime creationDate, int ironCost,
-			int plutoniumCost, int goldCost, Planet planet, ResourceEnum extractedResource, int productionCapacity) {
+			int plutoniumCost, int goldCost, Planet planet, ResourceEnum extractedResource, double productionCapacity) {
 		super(size, health, productionDelay, creationDate, ironCost, plutoniumCost, goldCost, planet);
 		this.extractedResource = extractedResource;
 		this.productionCapacity = productionCapacity;

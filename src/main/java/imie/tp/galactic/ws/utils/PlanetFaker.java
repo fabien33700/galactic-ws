@@ -1,4 +1,4 @@
-package imie.tp.galactic.ws.core.dev;
+package imie.tp.galactic.ws.utils;
 
 import com.github.javafaker.Faker;
 import imie.tp.galactic.ws.model.general.Planet;
@@ -24,22 +24,21 @@ public class PlanetFaker {
     private static final int MAX_STK_PLUT = 4000;
     private static final int MAX_STK_GOLD = 8500;
 
-    private static final Random rd = new Random();
     private static final Faker faker = new Faker();
 
     public static Planet makePlanet() {
 
         return new Planet(
-            rd.nextInt(MAX_X_COORD - 1) + 1,
-            rd.nextInt(MAX_X_COORD - 1) + 1,
-            rd.nextInt(MAX_ORB_SPACE - 1) + 1,
-            rd.nextInt(MAX_GND_SPACE - 1) + 1,
-            rd.nextInt(MAX_AVL_IRON - 1) + 1,
-            rd.nextInt(MAX_AVL_PLUT - 1) + 1,
-            rd.nextInt(MAX_AVL_GOLD - 1) + 1,
-            rd.nextInt(MAX_STK_IRON - 1) + 1,
-            rd.nextInt(MAX_STK_PLUT - 1) + 1,
-            rd.nextInt(MAX_STK_GOLD - 1) + 1,
+            FakeUtils.randomInt(1, MAX_X_COORD),
+            FakeUtils.randomInt(1, MAX_Y_COORD),
+            FakeUtils.randomInt(1, MAX_ORB_SPACE),
+            FakeUtils.randomInt(1, MAX_GND_SPACE),
+            FakeUtils.randomInt(1, MAX_AVL_IRON),
+            FakeUtils.randomInt(1, MAX_AVL_PLUT),
+            FakeUtils.randomInt(1, MAX_AVL_GOLD),
+            FakeUtils.randomInt(1, MAX_STK_IRON),
+            FakeUtils.randomInt(1, MAX_STK_PLUT),
+            FakeUtils.randomInt(1, MAX_STK_GOLD),
             fakePlanetName(),
             new ArrayList<>(),
             new Player(fakePseudo())
@@ -47,10 +46,17 @@ public class PlanetFaker {
     }
 
     private static String fakePlanetName() {
-        return planets[rd.nextInt(planets.length-1)] + " " + rd.nextInt(9999);
+        return new StringBuilder()
+                .append(FakeUtils.randomItem(planets))
+                .append(" ")
+                .append(FakeUtils.randomInt(0, 9999))
+                .toString();
     }
 
     private static String fakePseudo() {
-        return faker.name().firstName().toLowerCase() + rd.nextInt(9999);
+        return new StringBuilder()
+                .append(faker.name().firstName().toLowerCase())
+                .append(FakeUtils.randomInt(0, 9999))
+                .toString();
     }
 }

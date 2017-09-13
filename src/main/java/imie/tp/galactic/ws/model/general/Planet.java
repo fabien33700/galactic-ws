@@ -2,9 +2,8 @@ package imie.tp.galactic.ws.model.general;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonView;
-import imie.tp.galactic.ws.model.core.Identifiable;
+import imie.tp.galactic.ws.model.identity.Identifiable;
 import imie.tp.galactic.ws.views.Views;
 
 public class Planet extends Identifiable {
@@ -75,7 +74,7 @@ public class Planet extends Identifiable {
 	/**
 	 * Liste des unités construites sur la planète
      */
-    @JsonView(Views.ShowOnePlanet.class)
+    @JsonView({Views.ShowOnePlanet.class})
 	private List<Unity> unities;
 	
 	/**

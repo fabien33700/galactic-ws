@@ -1,23 +1,36 @@
 package imie.tp.galactic.ws.controllers;
 
-import imie.tp.galactic.ws.model.general.UnityType;
-import imie.tp.galactic.ws.services.UnityTypeService;
+import com.fasterxml.jackson.annotation.JsonView;
+import imie.tp.galactic.ws.model.general.Unity;
+import imie.tp.galactic.ws.resources.UnityCreationRequest;
+import imie.tp.galactic.ws.services.UnityService;
+import imie.tp.galactic.ws.views.Views;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Set;
+import javax.validation.Valid;
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/unities/types")
+@RequestMapping("/api/planet/{id}/unities")
 public class UnityController {
 
     @Autowired
-    private UnityTypeService unityTypeService;
+    private UnityService unityService;
+
 
     @GetMapping
-    public Set<UnityType> getAllUnitiesTypes() {
-        return unityTypeService.getUnityTypes();
+    @JsonView(Views.Public.class)
+    public List<Unity> getAllUnitiesOnPlanet(@PathVariable("id") Long planetId) {
+        return unityService.findAllOnPlanet(planetId);
+    }
+
+    @PostMapping
+    public ResponseEntity createUnityOnPlanet(
+            @PathVariable("id") Long planetId,
+            @RequestBody UnityCreationRequest request) {
+        unityService.createUnityOnPlanet(planetId, request.getUnityType());
+        return null;
     }
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import imie.tp.galactic.ws.model.core.Identifiable;
+import imie.tp.galactic.ws.model.identity.Identifiable;
 import imie.tp.galactic.ws.views.Views;
 
 public class Player extends Identifiable {

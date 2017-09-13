@@ -2,9 +2,14 @@ package imie.tp.galactic.ws.model.general;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import imie.tp.galactic.ws.model.constants.GameConstants;
-import imie.tp.galactic.ws.model.core.Identifiable;
+import imie.tp.galactic.ws.model.identity.Identifiable;
+import imie.tp.galactic.ws.serializers.DateDeserializer;
+import imie.tp.galactic.ws.serializers.DateSerializer;
 import imie.tp.galactic.ws.views.Views;
 
 /**
@@ -12,6 +17,7 @@ import imie.tp.galactic.ws.views.Views;
  * @author Fabien
  *
  */
+
 public abstract class Unity extends Identifiable {
 
 	/**
@@ -28,11 +34,13 @@ public abstract class Unity extends Identifiable {
 	/**
 	 * La taille de l'unité
 	 */
+	@JsonView(Views.Public.class)
 	protected int size;
 	
 	/**
 	 * Les points de vie de l'unité
 	 */
+	@JsonView(Views.Public.class)
 	protected int health;
 	
 	/**
@@ -43,6 +51,9 @@ public abstract class Unity extends Identifiable {
 	/**
 	 * Date de début de construction de l'unité
 	 */
+	@JsonView(Views.Public.class)
+	@JsonSerialize(using = DateSerializer.class)
+	@JsonDeserialize(using = DateDeserializer.class)
 	protected LocalDateTime creationDate;
 	
 	/**
@@ -63,12 +74,15 @@ public abstract class Unity extends Identifiable {
 	/**
 	 * La planète sur laquelle est construite l'unité
 	 */
+	@JsonView({Views.ShowOneUnity.class})
 	protected Planet planet;
 	
 	/**
 	 * Indique si l'unité est en construction
 	 * @return
 	 */
+	@JsonView(Views.Public.class)
+	@JsonGetter(value = "building")
 	public boolean isBuilding() {
 		return creationDate
 				.plusSeconds(productionDelay)
@@ -98,6 +112,12 @@ public abstract class Unity extends Identifiable {
 		this.goldCost = goldCost;
 		this.planet = planet;
 		this.name = "";
+	}
+
+	@JsonGetter("type")
+	@JsonView(Views.Public.class)
+	public String getType() {
+		return this.getClass().getSimpleName();
 	}
 
 	public String getName() {
