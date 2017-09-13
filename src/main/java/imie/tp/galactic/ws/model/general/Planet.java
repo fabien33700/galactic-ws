@@ -2,6 +2,7 @@ package imie.tp.galactic.ws.model.general;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonView;
 import imie.tp.galactic.ws.model.core.Identifiable;
 import imie.tp.galactic.ws.views.Views;
@@ -80,11 +81,8 @@ public class Planet extends Identifiable {
 	/**
 	 * Propriétaire (joueur) de la planète
 	 */
-    @JsonView(Views.ShowOnePlanet.class)
+    @JsonView(Views.Public.class)
 	private Player owner;
-
-    @JsonView(Views.ShowAllPlanets.class)
-	private String ownerName;
 	
 
 	public Planet(int coordX, int coordY, int orbitalFreeSpace, int groundFreeSpace, int availableIron,
@@ -213,12 +211,4 @@ public class Planet extends Identifiable {
 	public void setOwner(Player owner) {
 		this.owner = owner;
 	}
-
-    public String getOwnerName() {
-        return ownerName;
-    }
-
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-    }
 }

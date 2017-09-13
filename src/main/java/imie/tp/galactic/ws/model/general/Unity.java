@@ -2,15 +2,23 @@ package imie.tp.galactic.ws.model.general;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import imie.tp.galactic.ws.model.constants.GameConstants;
 import imie.tp.galactic.ws.model.core.Identifiable;
+import imie.tp.galactic.ws.views.Views;
 
 /**
- * Classe abstratie représentant une unité
+ * Classe abstraite représentant une unité
  * @author Fabien
  *
  */
 public abstract class Unity extends Identifiable {
+
+	/**
+	 * Le nom du type d'unité
+	 */
+	@JsonView(Views.UnityType.class)
+	protected String name;
 	
 	/**
 	 * Le niveau de l'unité
@@ -43,7 +51,7 @@ public abstract class Unity extends Identifiable {
 	protected int ironCost;
 	
 	/**
-	 * Co�t de l'unit� en plutonium
+	 * Coût de l'unité en plutonium
 	 */
 	protected int plutoniumCost;
 	
@@ -89,6 +97,11 @@ public abstract class Unity extends Identifiable {
 		this.plutoniumCost = plutoniumCost;
 		this.goldCost = goldCost;
 		this.planet = planet;
+		this.name = "";
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public int getLevel() {

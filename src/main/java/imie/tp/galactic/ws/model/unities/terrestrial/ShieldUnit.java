@@ -2,15 +2,24 @@ package imie.tp.galactic.ws.model.unities.terrestrial;
 
 import java.time.LocalDateTime;
 
+import imie.tp.galactic.ws.model.constants.GameConstants;
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.unities.TerrestrialUnity;
 
 public class ShieldUnit extends TerrestrialUnity {
 
-	protected ShieldUnit(int size, int health, Long productionDelay, LocalDateTime creationDate, int ironCost,
-			int plutoniumCost, int goldCost, Planet planet) {
-		super(size, health, productionDelay, creationDate, ironCost, plutoniumCost, goldCost, planet);
-		// TODO Auto-generated constructor stub
+	public ShieldUnit(Planet planet) {
+		super(
+				GameConstants.ShieldUnit.SIZE,
+				GameConstants.ShieldUnit.HEALTH,
+				GameConstants.ShieldUnit.PRODUCT_DELAY,
+				LocalDateTime.now(),
+				GameConstants.ShieldUnit.IRON_COST,
+				GameConstants.ShieldUnit.PLUTONIUM_COST,
+				GameConstants.ShieldUnit.GOLD_COST,
+				planet
+		);
+		this.name = "Producteur de champ de force";
 	}
 
 

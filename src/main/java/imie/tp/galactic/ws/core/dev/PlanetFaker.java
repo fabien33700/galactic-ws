@@ -2,6 +2,7 @@ package imie.tp.galactic.ws.core.dev;
 
 import com.github.javafaker.Faker;
 import imie.tp.galactic.ws.model.general.Planet;
+import imie.tp.galactic.ws.model.general.Player;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -28,7 +29,7 @@ public class PlanetFaker {
 
     public static Planet makePlanet() {
 
-        Planet planet = new Planet(
+        return new Planet(
             rd.nextInt(MAX_X_COORD - 1) + 1,
             rd.nextInt(MAX_X_COORD - 1) + 1,
             rd.nextInt(MAX_ORB_SPACE - 1) + 1,
@@ -41,10 +42,8 @@ public class PlanetFaker {
             rd.nextInt(MAX_STK_GOLD - 1) + 1,
             fakePlanetName(),
             new ArrayList<>(),
-            null
+            new Player(fakePseudo())
         );
-        planet.setOwnerName(fakePseudo());
-        return planet;
     }
 
     private static String fakePlanetName() {

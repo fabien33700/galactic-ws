@@ -17,8 +17,7 @@ public class IronShed extends StorageShed {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected IronShed(int size, int health, Long productionDelay, LocalDateTime creationDate, int ironCost,
-			int plutoniumCost, int goldCost, Planet planet, int capacity) {
+    public IronShed(Planet planet) {
 		super(
 				GameConstants.IronShed.SIZE,
 				GameConstants.IronShed.HEALTH,
@@ -31,6 +30,7 @@ public class IronShed extends StorageShed {
 				ResourceEnum.IRON,
 				GameConstants.IronShed.INIT_CAPACITY
 			);
+		this.name = "Hangar à fer";
 	}
 
 }

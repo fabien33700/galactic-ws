@@ -1,4 +1,4 @@
-package imie.tp.galactic.ws.model.gather;
+package imie.tp.galactic.ws.model.unities.gather;
 
 import java.time.LocalDateTime;
 
@@ -9,7 +9,7 @@ import imie.tp.galactic.ws.model.unities.GatherUnity;
 
 public class IronMine extends GatherUnity {
 	
-	protected IronMine(Planet planet) {
+	public IronMine(Planet planet) {
 		
 		super(
 				GameConstants.IronMine.SIZE,
@@ -23,7 +23,7 @@ public class IronMine extends GatherUnity {
 				ResourceEnum.IRON,
 				GameConstants.IronMine.INIT_CAPACITY
 			);
-		
+		this.name = "Mine de fer";
 	}
 
 }

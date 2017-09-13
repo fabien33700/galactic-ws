@@ -17,8 +17,7 @@ public class PlutoniumShed extends StorageShed {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected PlutoniumShed(int size, int health, Long productionDelay, LocalDateTime creationDate, int ironCost,
-			int plutoniumCost, int goldCost, Planet planet, int capacity) {
+    public PlutoniumShed(Planet planet) {
 		super(
 				GameConstants.PlutoniumShed.SIZE,
 				GameConstants.PlutoniumShed.HEALTH,
@@ -31,6 +30,7 @@ public class PlutoniumShed extends StorageShed {
 				ResourceEnum.PLUTONIUM,
 				GameConstants.PlutoniumShed.INIT_CAPACITY
 			);
+		this.name = "Hangar à plutonium";
 	}
 
 }

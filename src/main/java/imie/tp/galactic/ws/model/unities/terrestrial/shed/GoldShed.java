@@ -17,8 +17,7 @@ public class GoldShed extends StorageShed {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected GoldShed(int size, int health, Long productionDelay, LocalDateTime creationDate, int ironCost,
-			int plutoniumCost, int goldCost, Planet planet, int capacity) {
+    public GoldShed(Planet planet) {
 		super(
 				GameConstants.GoldShed.SIZE,
 				GameConstants.GoldShed.HEALTH,
@@ -31,6 +30,7 @@ public class GoldShed extends StorageShed {
 				ResourceEnum.GOLD,
 				GameConstants.GoldShed.INIT_CAPACITY
 			);
+		this.name = "Hangar à or";
 	}
 
 }

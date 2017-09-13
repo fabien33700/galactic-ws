@@ -2,6 +2,7 @@ package imie.tp.galactic.ws.model.unities.orbital;
 
 import java.time.LocalDateTime;
 
+import imie.tp.galactic.ws.model.constants.GameConstants;
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.unities.OrbitalUnity;
 
@@ -30,13 +31,23 @@ public class Transporter extends OrbitalUnity {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected Transporter(int size, int health, Long productionDelay, LocalDateTime creationDate, int ironCost,
-			int plutoniumCost, int goldCost, Planet planet, int speed, int goldVolume, int plutoniumVolume,
-			int ironVolume) {
-		super(size, health, productionDelay, creationDate, ironCost, plutoniumCost, goldCost, planet, speed);
-		this.goldVolume = goldVolume;
-		this.plutoniumVolume = plutoniumVolume;
-		this.ironVolume = ironVolume;
+
+	public Transporter(Planet planet) {
+		super(
+				GameConstants.Transporter.SIZE,
+				GameConstants.Transporter.HEALTH,
+				GameConstants.Transporter.PRODUCT_DELAY,
+				LocalDateTime.now(),
+				GameConstants.Transporter.IRON_COST,
+				GameConstants.Transporter.PLUTONIUM_COST,
+				GameConstants.Transporter.GOLD_COST,
+				planet,
+				GameConstants.Transporter.BASE_SPEED
+		);
+		this.goldVolume = GameConstants.Transporter.GOLD_VOLUME;
+		this.plutoniumVolume = GameConstants.Transporter.PLUT_VOLUME;
+		this.ironVolume = GameConstants.Transporter.IRON_VOLUME;
+		this.name = "Transporteur";
 	}
 
 	public int getGoldVolume() {

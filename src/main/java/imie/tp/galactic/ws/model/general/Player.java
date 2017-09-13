@@ -2,15 +2,20 @@ package imie.tp.galactic.ws.model.general;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import imie.tp.galactic.ws.model.core.Identifiable;
+import imie.tp.galactic.ws.views.Views;
 
 public class Player extends Identifiable {
-	
-	private Long id;
-	
+
+	@JsonView(Views.Public.class)
 	private String pseudo;
+
+	@JsonIgnore
 	private String hashPass;
-	
+
+	@JsonView(Views.Player.class)
 	private List<Planet> planets;
 	
 	public Player() {
@@ -19,10 +24,6 @@ public class Player extends Identifiable {
 
 	public Player(String pseudo) {
 		this.pseudo = pseudo;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 	public String getPseudo() {

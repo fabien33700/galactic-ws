@@ -1,16 +1,27 @@
 package imie.tp.galactic.ws.model.unities.orbital;
 
-import java.time.LocalDateTime;
-
+import imie.tp.galactic.ws.model.constants.GameConstants;
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.unities.OrbitalUnity;
 
-public class Scout extends OrbitalUnity {
+import java.time.LocalDateTime;
 
-	protected Scout(int size, int health, Long productionDelay, LocalDateTime creationDate, int ironCost,
-			int plutoniumCost, int goldCost, Planet planet, int speed) {
-		super(size, health, productionDelay, creationDate, ironCost, plutoniumCost, goldCost, planet, speed);
-		// TODO Auto-generated constructor stub
+public class Scout extends OrbitalUnity {
+	
+
+	public Scout(Planet planet) {
+		super(
+				GameConstants.Scout.SIZE,
+				GameConstants.Scout.HEALTH,
+				GameConstants.Scout.PRODUCT_DELAY,
+				LocalDateTime.now(),
+				GameConstants.Scout.IRON_COST,
+				GameConstants.Scout.PLUTONIUM_COST,
+				GameConstants.Scout.GOLD_COST,
+				planet,
+				GameConstants.Scout.BASE_SPEED
+		);
+		this.name = "Scout";
 	}
 
 }

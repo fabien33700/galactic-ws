@@ -2,6 +2,7 @@ package imie.tp.galactic.ws.model.unities.production;
 
 import java.time.LocalDateTime;
 
+import imie.tp.galactic.ws.model.constants.GameConstants;
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.unities.ProductionUnity;
 
@@ -15,9 +16,18 @@ public class WeaponFactory extends ProductionUnity {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected WeaponFactory(int size, int health, Long productionDelay, LocalDateTime creationDate, int ironCost,
-			int plutoniumCost, int goldCost, Planet planet) {
-		super(size, health, productionDelay, creationDate, ironCost, plutoniumCost, goldCost, planet);
+    public WeaponFactory(Planet planet) {
+		super(
+				GameConstants.WeaponFactory.SIZE,
+				GameConstants.WeaponFactory.HEALTH,
+				GameConstants.WeaponFactory.PRODUCT_DELAY,
+				LocalDateTime.now(),
+				GameConstants.WeaponFactory.IRON_COST,
+				GameConstants.WeaponFactory.PLUTONIUM_COST,
+				GameConstants.WeaponFactory.GOLD_COST,
+				planet
+		);
+		this.name = "Usine d'armement";
 	}
 
 }

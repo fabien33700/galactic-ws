@@ -33,7 +33,6 @@ public class IdGenerator {
 	public Long registerObject(Identifiable identifiable) {
 		Long id = getLastId() + 1;
 		this.identifiables.put(id, identifiable);
-		
 		return id;
 	}
 	

@@ -1,4 +1,4 @@
-package imie.tp.galactic.ws.model.gather;
+package imie.tp.galactic.ws.model.unities.gather;
 
 import imie.tp.galactic.ws.model.constants.GameConstants;
 import imie.tp.galactic.ws.model.core.ResourceEnum;
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public class GoldMine extends GatherUnity {
 
-	protected GoldMine(Planet planet) {
+	public GoldMine(Planet planet) {
 		super(
 				GameConstants.GoldMine.SIZE,
 				GameConstants.GoldMine.HEALTH,
@@ -22,6 +22,7 @@ public class GoldMine extends GatherUnity {
 				ResourceEnum.GOLD,
 				GameConstants.GoldMine.INIT_CAPACITY
 			);
+		this.name = "Mine d'or";
 	}
 
 }

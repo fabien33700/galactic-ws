@@ -1,4 +1,4 @@
-package imie.tp.galactic.ws.model.gather;
+package imie.tp.galactic.ws.model.unities.gather;
 
 import java.time.LocalDateTime;
 
@@ -9,7 +9,7 @@ import imie.tp.galactic.ws.model.unities.GatherUnity;
 
 public class PlutoniumFactory extends GatherUnity {
 
-	protected PlutoniumFactory(Planet planet) {
+	public PlutoniumFactory(Planet planet) {
 		super(
 				GameConstants.PlutoniumFactory.SIZE,
 				GameConstants.PlutoniumFactory.HEALTH,
@@ -22,6 +22,7 @@ public class PlutoniumFactory extends GatherUnity {
 				ResourceEnum.PLUTONIUM,
 				GameConstants.PlutoniumFactory.INIT_CAPACITY
 			);
+		this.name = "Usine de plutonium";
 	}
 
 }
