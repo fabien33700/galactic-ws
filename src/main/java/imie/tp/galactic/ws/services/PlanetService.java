@@ -8,17 +8,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
-public class PlanetService {
+public class PlanetService implements ResourceService {
 
     private static final Logger logger = LoggerFactory.getLogger(PlanetService.class);
 
+    private final InMemoryModel inMemoryModel;
+
     @Autowired
-    private InMemoryModel inMemoryModel;
+    public PlanetService(InMemoryModel inMemoryModel) {
+        this.inMemoryModel = inMemoryModel;
+    }
 
     public List<Planet> findAll() {
         return inMemoryModel.getUniverse();
@@ -30,5 +32,10 @@ public class PlanetService {
                 .filter(p -> p.getId().equals(id))
                 .findFirst()
                 .orElseThrow(() -> new ResourceNotFoundException(id));
+    }
+
+    @Override
+    public InMemoryModel getModel() {
+        return inMemoryModel;
     }
 }

@@ -11,10 +11,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UnityService {
+public class UnityService implements ResourceService {
+
+    private final PlanetService planetService;
+    private final InMemoryModel inMemoryModel;
 
     @Autowired
-    private PlanetService planetService;
+    public UnityService(PlanetService planetService, InMemoryModel inMemoryModel) {
+        this.planetService = planetService;
+        this.inMemoryModel = inMemoryModel;
+    }
 
     public List<Unity> findAllOnPlanet(Long planetId) {
         return planetService.findById(planetId).getUnities();
@@ -22,7 +28,7 @@ public class UnityService {
 
     public void createUnityOnPlanet(Long planetId, UnityTypeEnum resource) {
         Planet p = planetService.findById(planetId);
-        Unity u = null;
+        Unity u;
         try {
             u = resource.getClazz()
                     .getDeclaredConstructor(Planet.class)
@@ -32,8 +38,12 @@ public class UnityService {
             throw new InternalServerException(e);
         }
 
-        if (u != null) {
-            p.getUnities().add(u);
-        }
+        p.getUnities().add(u);
+        save();
+    }
+
+    @Override
+    public InMemoryModel getModel() {
+        return inMemoryModel;
     }
 }

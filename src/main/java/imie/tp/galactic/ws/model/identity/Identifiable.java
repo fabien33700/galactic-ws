@@ -3,9 +3,11 @@ package imie.tp.galactic.ws.model.identity;
 import com.fasterxml.jackson.annotation.JsonView;
 import imie.tp.galactic.ws.views.Views;
 
-public abstract class Identifiable {
-	
-	protected Long id = 0L;
+import java.io.Serializable;
+
+public abstract class Identifiable implements Serializable{
+
+	private Long id = 0L;
 
 	@JsonView(Views.Public.class)
 	public Long getId() {

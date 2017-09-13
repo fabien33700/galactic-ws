@@ -9,16 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/planet/{id}/unities")
 public class UnityController {
 
-    @Autowired
-    private UnityService unityService;
+    private final UnityService unityService;
 
+    @Autowired
+    public UnityController(UnityService unityService) {
+        this.unityService = unityService;
+    }
 
     @GetMapping
     @JsonView(Views.Public.class)
@@ -26,11 +28,11 @@ public class UnityController {
         return unityService.findAllOnPlanet(planetId);
     }
 
-    @PostMapping
+    @PutMapping
     public ResponseEntity createUnityOnPlanet(
             @PathVariable("id") Long planetId,
             @RequestBody UnityCreationRequest request) {
         unityService.createUnityOnPlanet(planetId, request.getUnityType());
-        return null;
+        return ResponseEntity.ok().build();
     }
 }

@@ -1,6 +1,5 @@
 package imie.tp.galactic.ws.services;
 
-import imie.tp.galactic.ws.model.general.Unity;
 import imie.tp.galactic.ws.model.general.UnityType;
 import imie.tp.galactic.ws.model.unities.gather.GoldMine;
 import imie.tp.galactic.ws.model.unities.gather.IronMine;
@@ -24,9 +23,9 @@ import java.util.Set;
 @Service
 public class UnityTypeService {
 
-    private static Set<UnityType> unityTypes = new HashSet<>();
+    private Set<UnityType> unityTypes = new HashSet<>();
 
-    static {
+    public UnityTypeService() {
         unityTypes.add(new UnityType(new GoldMine(null)));
         unityTypes.add(new UnityType(new IronMine(null)));
         unityTypes.add(new UnityType(new PlutoniumFactory(null)));
@@ -43,7 +42,7 @@ public class UnityTypeService {
         unityTypes.add(new UnityType(new Transporter(null)));
     }
 
-    public static Set<UnityType> getUnityTypes() {
+    public Set<UnityType> getUnityTypes() {
         return unityTypes;
     }
 }
