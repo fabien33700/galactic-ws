@@ -18,8 +18,12 @@ import java.util.Set;
 @RequestMapping("/api/players")
 public class PlayerController {
 
+    private final PlayerService playerService;
+
     @Autowired
-    private PlayerService playerService;
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
+    }
 
     @GetMapping
     @JsonView(Views.Player.class)

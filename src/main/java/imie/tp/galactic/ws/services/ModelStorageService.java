@@ -9,7 +9,7 @@ import java.io.*;
 @Service
 public class ModelStorageService {
 
-    private Logger logger = LoggerFactory.getLogger(ModelStorageService.class);
+    private final Logger logger = LoggerFactory.getLogger(ModelStorageService.class);
 
     public void save(Object model) {
         logger.info("Sauvegarde du modèle");

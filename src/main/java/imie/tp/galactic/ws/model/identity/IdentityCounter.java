@@ -1,12 +1,14 @@
 package imie.tp.galactic.ws.model.identity;
 
+import imie.tp.galactic.ws.core.Reinitializable;
+
 import java.util.HashMap;
 
-public class IdentifierGenerator {
+public class IdentityCounter implements Reinitializable {
 	
 	private HashMap<Long, Identifiable> identifiables;
 
-	private static IdentifierGenerator instance = null;
+	private static IdentityCounter instance = null;
 	
 	private Long getLastId() {
 		return identifiables.keySet()
@@ -14,7 +16,7 @@ public class IdentifierGenerator {
 			.max().orElse(0);
 	}
 	
-	private IdentifierGenerator() {
+	private IdentityCounter() {
 		this.identifiables = new HashMap<>();
 	}
 
@@ -22,9 +24,9 @@ public class IdentifierGenerator {
 		return identifiables;
 	}
 
-    static IdentifierGenerator getInstance() {
+    public static IdentityCounter getInstance() {
 	    if (instance == null) {
-	        instance = new IdentifierGenerator();
+	        instance = new IdentityCounter();
         }
         return instance;
     }
@@ -35,7 +37,10 @@ public class IdentifierGenerator {
 
 		return id;
 	}
-	
-	
 
+
+	@Override
+	public void reset() {
+		identifiables.clear();
+	}
 }

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.util.List;
 
@@ -26,15 +27,16 @@ public class UnityController {
 
     @GetMapping
     @JsonView(Views.Public.class)
-    public List<Unity> getAllUnitiesOnPlanet(@PathVariable("id") Long planetId) {
-        return unityService.findAllOnPlanet(planetId);
+    public List<Unity> getAllUnitiesOnPlanet(@PathVariable("id") Long planetId, HttpServletRequest req) {
+        return unityService.findAllOnPlanet(req, planetId);
     }
 
     @PutMapping
     public ResponseEntity createUnityOnPlanet(
             @PathVariable("id") Long planetId,
-            @RequestBody UnityCreationRequest request) {
-        long id = unityService.createUnityOnPlanet(planetId, request.getUnityType());
+            @RequestBody UnityCreationRequest request,
+            HttpServletRequest req) {
+        long id = unityService.createUnityOnPlanet(req, planetId, request.getUnityType());
 
         if (id > 0L) {
             URI location = ServletUriComponentsBuilder

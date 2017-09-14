@@ -13,7 +13,12 @@ import java.util.Set;
 @Service
 public class PlayerService {
 
-    @Autowired private InMemoryModel inMemoryModel;
+    private final InMemoryModel inMemoryModel;
+
+    @Autowired
+    public PlayerService(InMemoryModel inMemoryModel) {
+        this.inMemoryModel = inMemoryModel;
+    }
 
     public Set<Player> findAll() {
         return inMemoryModel.getUniverse().getPlayers();

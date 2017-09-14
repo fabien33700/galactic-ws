@@ -63,7 +63,9 @@ public class InMemoryModel {
 
     }
 
-    private void buildModel() {
+    public void buildModel() {
+        universe.reset();
+
         for (int i = 0; i < FakeUtils.randomInt(4, 8); i++) {
             Planet p = PlanetFaker.makePlanet();
             Player o = p.getOwner();

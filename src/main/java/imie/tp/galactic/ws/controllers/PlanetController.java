@@ -5,11 +5,13 @@ import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.services.PlanetService;
 import imie.tp.galactic.ws.views.Views;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
 
 @RestController
@@ -17,18 +19,22 @@ import java.util.Set;
 
 public class PlanetController {
 
+    private final PlanetService planetService;
+
     @Autowired
-    private PlanetService planetService;
+    public PlanetController(PlanetService planetService) {
+        this.planetService = planetService;
+    }
 
     @GetMapping
     @JsonView(Views.ShowAllPlanets.class)
-    public Set<Planet> getAllPlanets() {
-        return planetService.findAll();
+    public Set<Planet> getAllPlanets(HttpServletRequest req) {
+        return planetService.findAll(req);
     }
 
     @GetMapping("/{id}")
     @JsonView(Views.ShowOnePlanet.class)
-    public Planet getPlanet(@PathVariable Long id) {
-        return planetService.findById(id);
+    public Planet getPlanet(@PathVariable Long id, HttpServletRequest req) {
+        return planetService.findById(req, id);
     }
 }

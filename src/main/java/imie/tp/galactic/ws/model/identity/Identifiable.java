@@ -16,7 +16,7 @@ public abstract class Identifiable implements Serializable{
 	}
 	
 	protected Identifiable() {
-		this.id = IdentifierGenerator.getInstance().registerObject(this);
+		this.id = IdentityCounter.getInstance().registerObject(this);
 	}
 
 }

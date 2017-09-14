@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import imie.tp.galactic.ws.model.identity.Identifiable;
 import imie.tp.galactic.ws.views.Views;
 
-public class Player extends Identifiable {
+public class Player extends Identifiable implements Comparable<Player> {
 
 	private static final long serialVersionUID = 1563736634107946033L;
 	@JsonView(Views.Public.class)
@@ -63,6 +63,12 @@ public class Player extends Identifiable {
 		this.planets = planets;
 	}
 	
-	
+	public String toString() {
+		return pseudo + ":" + hashPass;
+	}
 
+	@Override
+	public int compareTo(Player o) {
+		return getId().compareTo(o.getId());
+	}
 }

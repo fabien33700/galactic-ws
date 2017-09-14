@@ -20,4 +20,8 @@ public class FakeUtils {
         ArrayList<T> ordered = new ArrayList<>(source);
         return ordered.get(rd.nextInt(ordered.size()-1));
     }
+
+    public static String randomChars(String chars) {
+        return "" + chars.charAt(rd.nextInt(chars.length() - 1));
+    }
 }

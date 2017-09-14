@@ -34,7 +34,7 @@ public enum UnityTypeEnum {
     SCOUT (Scout.class),
     TRANSPORTER (Transporter.class);
 
-    private Class<? extends Unity> clazz;
+    private final Class<? extends Unity> clazz;
     
     UnityTypeEnum(Class<? extends Unity> clazz) {
         this.clazz = clazz;
