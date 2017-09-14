@@ -29,19 +29,38 @@ public class PlanetFaker {
     public static Planet makePlanet() {
 
         return new Planet(
-            FakeUtils.randomInt(1, MAX_X_COORD),
-            FakeUtils.randomInt(1, MAX_Y_COORD),
-            FakeUtils.randomInt(1, MAX_ORB_SPACE),
-            FakeUtils.randomInt(1, MAX_GND_SPACE),
-            FakeUtils.randomInt(1, MAX_AVL_IRON),
-            FakeUtils.randomInt(1, MAX_AVL_PLUT),
-            FakeUtils.randomInt(1, MAX_AVL_GOLD),
-            FakeUtils.randomInt(1, MAX_STK_IRON),
-            FakeUtils.randomInt(1, MAX_STK_PLUT),
-            FakeUtils.randomInt(1, MAX_STK_GOLD),
-            fakePlanetName(),
-            new ArrayList<>(),
-            new Player(fakePseudo())
+                FakeUtils.randomInt(1, MAX_X_COORD),
+                FakeUtils.randomInt(1, MAX_Y_COORD),
+                FakeUtils.randomInt(1, MAX_ORB_SPACE),
+                FakeUtils.randomInt(1, MAX_GND_SPACE),
+                FakeUtils.randomInt(1, MAX_AVL_IRON),
+                FakeUtils.randomInt(1, MAX_AVL_PLUT),
+                FakeUtils.randomInt(1, MAX_AVL_GOLD),
+                FakeUtils.randomInt(1, MAX_STK_IRON),
+                FakeUtils.randomInt(1, MAX_STK_PLUT),
+                FakeUtils.randomInt(1, MAX_STK_GOLD),
+                fakePlanetName(),
+                new ArrayList<>(),
+                new Player(fakePseudo())
+        );
+    }
+
+    public static Planet makePlanet(Player player) {
+
+        return new Planet(
+                FakeUtils.randomInt(1, MAX_X_COORD),
+                FakeUtils.randomInt(1, MAX_Y_COORD),
+                FakeUtils.randomInt(1, MAX_ORB_SPACE),
+                FakeUtils.randomInt(1, MAX_GND_SPACE),
+                FakeUtils.randomInt(1, MAX_AVL_IRON),
+                FakeUtils.randomInt(1, MAX_AVL_PLUT),
+                FakeUtils.randomInt(1, MAX_AVL_GOLD),
+                FakeUtils.randomInt(1, MAX_STK_IRON),
+                FakeUtils.randomInt(1, MAX_STK_PLUT),
+                FakeUtils.randomInt(1, MAX_STK_GOLD),
+                fakePlanetName(),
+                new ArrayList<>(),
+                player
         );
     }
 

@@ -12,6 +12,8 @@ import imie.tp.galactic.ws.serializers.DateDeserializer;
 import imie.tp.galactic.ws.serializers.DateSerializer;
 import imie.tp.galactic.ws.views.Views;
 
+import javax.swing.text.View;
+
 /**
  * Classe abstraite représentant une unité
  * @author Fabien
@@ -21,6 +23,14 @@ import imie.tp.galactic.ws.views.Views;
 public abstract class Unity extends Identifiable {
 
 	private static final long serialVersionUID = 6000849228361180483L;
+
+	@JsonView(Views.Public.class)
+	@JsonGetter("orbital")
+	public boolean isOrbital() {
+		return false;
+	}
+
+
 	/**
 	 * Le nom du type d'unité
 	 */

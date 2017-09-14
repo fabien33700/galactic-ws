@@ -4,18 +4,27 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonView;
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.general.Unity;
 import imie.tp.galactic.ws.services.TravelService;
+import imie.tp.galactic.ws.views.Views;
 
 public abstract class OrbitalUnity extends Unity {
 
 	private static final long serialVersionUID = 8522474967754431758L;
+
+	@JsonView(Views.Public.class)
+	@JsonGetter("orbital")
+	public boolean isOrbital() {
+		return true;
+	}
 	/**
 	 * La vitesse de déplacement de l'unité orbital
 	 */
 	protected int speed;
-	
+
 	/**
 	 * La planète sur laquelle le vaisseau est stationné actuellement
 	 */

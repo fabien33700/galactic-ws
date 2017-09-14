@@ -1,6 +1,9 @@
 package imie.tp.galactic.ws.model.general;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -17,14 +20,23 @@ public class Player extends Identifiable {
 	private String hashPass;
 
 	@JsonView(Views.Player.class)
-	private List<Planet> planets;
+	private Set<Planet> planets;
 	
 	public Player() {
 		super();
+		planets = new HashSet<>();
+
 	}
 
 	public Player(String pseudo) {
+		this();
 		this.pseudo = pseudo;
+	}
+
+	public Player(String pseudo, String hashPass) {
+		this();
+		this.pseudo = pseudo;
+		this.hashPass = hashPass;
 	}
 
 	public String getPseudo() {
@@ -43,11 +55,11 @@ public class Player extends Identifiable {
 		this.hashPass = hashPass;
 	}
 
-	public List<Planet> getPlanets() {
+	public Set<Planet> getPlanets() {
 		return planets;
 	}
 
-	public void setPlanets(List<Planet> planets) {
+	public void setPlanets(Set<Planet> planets) {
 		this.planets = planets;
 	}
 	

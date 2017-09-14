@@ -1,8 +1,11 @@
 package imie.tp.galactic.ws.model.general;
 
 import imie.tp.galactic.ws.model.enums.UnityTypeEnum;
+import imie.tp.galactic.ws.model.unities.OrbitalUnity;
 
 public class UnityType {
+
+    private final boolean orbital;
 
     private String unityType;
     
@@ -26,6 +29,11 @@ public class UnityType {
         this.ironCost = unity.getIronCost();
         this.plutoniumCost = unity.getPlutoniumCost();
         this.name = unity.getName();
+        this.orbital = unity instanceof OrbitalUnity;
+    }
+
+    public boolean isOrbital() {
+        return orbital;
     }
 
     public int getSize() {

@@ -1,40 +1,37 @@
 package imie.tp.galactic.ws.controllers;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import imie.tp.galactic.ws.model.general.Unity;
-import imie.tp.galactic.ws.resources.UnityCreationRequest;
-import imie.tp.galactic.ws.services.UnityService;
+import imie.tp.galactic.ws.model.general.Player;
+import imie.tp.galactic.ws.resources.PlayerCreationRequest;
+import imie.tp.galactic.ws.services.PlayerService;
 import imie.tp.galactic.ws.views.Views;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
+import java.util.Set;
 
 @RestController
-@RequestMapping("/api/planet/{id}/unities")
-public class UnityController {
-
-    private final UnityService unityService;
+@RequestMapping("/api/players")
+public class PlayerController {
 
     @Autowired
-    public UnityController(UnityService unityService) {
-        this.unityService = unityService;
-    }
+    private PlayerService playerService;
 
     @GetMapping
-    @JsonView(Views.Public.class)
-    public List<Unity> getAllUnitiesOnPlanet(@PathVariable("id") Long planetId) {
-        return unityService.findAllOnPlanet(planetId);
+    @JsonView(Views.Player.class)
+    public Set<Player> getAllPlayers() {
+        return playerService.findAll();
     }
 
     @PutMapping
-    public ResponseEntity createUnityOnPlanet(
-            @PathVariable("id") Long planetId,
-            @RequestBody UnityCreationRequest request) {
-        long id = unityService.createUnityOnPlanet(planetId, request.getUnityType());
+    public ResponseEntity createPlayer(
+            @RequestBody @Valid PlayerCreationRequest request)
+    {
+        long id = playerService.createPlayer(request);
 
         if (id > 0L) {
             URI location = ServletUriComponentsBuilder
@@ -48,4 +45,5 @@ public class UnityController {
             return ResponseEntity.noContent().build();
         }
     }
+
 }

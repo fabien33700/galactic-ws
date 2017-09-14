@@ -5,9 +5,12 @@ import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.services.PlanetService;
 import imie.tp.galactic.ws.views.Views;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/planets")
@@ -19,7 +22,7 @@ public class PlanetController {
 
     @GetMapping
     @JsonView(Views.ShowAllPlanets.class)
-    public List<Planet> getAllPlanets() {
+    public Set<Planet> getAllPlanets() {
         return planetService.findAll();
     }
 

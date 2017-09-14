@@ -26,7 +26,7 @@ public class UnityService implements ResourceService {
         return planetService.findById(planetId).getUnities();
     }
 
-    public void createUnityOnPlanet(Long planetId, UnityTypeEnum resource) {
+    public Long createUnityOnPlanet(Long planetId, UnityTypeEnum resource) {
         Planet p = planetService.findById(planetId);
         Unity u;
         try {
@@ -40,6 +40,8 @@ public class UnityService implements ResourceService {
 
         p.getUnities().add(u);
         save();
+
+        return u.getId();
     }
 
     @Override

@@ -25,3 +25,6 @@ nbdist/
 
 ### Fichier du modèle ###
 model.ser
+
+*.cmd
+*.out

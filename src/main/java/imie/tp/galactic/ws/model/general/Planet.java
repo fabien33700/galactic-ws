@@ -81,7 +81,7 @@ public class Planet extends Identifiable {
 	/**
 	 * Propriétaire (joueur) de la planète
 	 */
-    @JsonView(Views.Public.class)
+    @JsonView(Views.Planet.class)
 	private Player owner;
 	
 

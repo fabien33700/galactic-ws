@@ -1,6 +1,7 @@
 package imie.tp.galactic.ws.core;
 
 import imie.tp.galactic.ws.model.general.Planet;
+import imie.tp.galactic.ws.model.general.Player;
 import imie.tp.galactic.ws.services.ModelStorageService;
 import imie.tp.galactic.ws.utils.FakeUtils;
 import imie.tp.galactic.ws.utils.PlanetFaker;
@@ -23,7 +24,7 @@ public class InMemoryModel {
 
     private static final Logger logger = LoggerFactory.getLogger(InMemoryModel.class);
 
-    private List<Planet> universe;
+    private Universe universe;
 
     private final ModelStorageService storage;
 
@@ -34,7 +35,7 @@ public class InMemoryModel {
 
     @PostConstruct
     public void init() {
-        this.universe =  new ArrayList<>();
+        this.universe =  new Universe();
         final Path path = Paths.get("model.ser");
 
         boolean exists = false;
@@ -52,7 +53,7 @@ public class InMemoryModel {
 
     private void loadModel() {
         try {
-            this.universe = (List<Planet>) storage.load();
+            this.universe = (Universe) storage.load();
         } catch (RuntimeException e) {
             logger.warn("Le chargement du modèle a échoué, génération d'un nouveau modèle.");
             buildModel();
@@ -65,7 +66,10 @@ public class InMemoryModel {
     private void buildModel() {
         for (int i = 0; i < FakeUtils.randomInt(4, 8); i++) {
             Planet p = PlanetFaker.makePlanet();
-            universe.add(p);
+            Player o = p.getOwner();
+            o.getPlanets().add(p);
+            universe.getPlanets().add(p);
+            universe.getPlayers().add(o);
 
             for (int j = 0; j < FakeUtils.randomInt(3, 6); j++) {
                 try {
@@ -84,7 +88,7 @@ public class InMemoryModel {
     }
 
 
-    public List<Planet> getUniverse() {
+    public Universe getUniverse() {
         return universe;
     }
 }
