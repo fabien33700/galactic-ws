@@ -38,7 +38,7 @@ public abstract class OrbitalUnity extends Unity {
 			int plutoniumCost, int goldCost, Planet planet, int speed) {
 		super(size, health, productionDelay, creationDate, ironCost, plutoniumCost, goldCost, planet);
 		this.speed = speed;
-		// Au d�part, le vaisseau est situ� dans l'orbite de la plan�te d'origine
+		// Au départ, le vaisseau est situé dans l'orbite de la planète d'origine
 		this.position = planet;
 	}
 	
