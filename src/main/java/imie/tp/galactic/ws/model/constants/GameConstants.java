@@ -4,7 +4,7 @@ public class GameConstants {
 
 	public static final int INIT_LEVEL = 1;
 
-	public static final long REFRESH_DELAY = 5000L;
+	public static final long REFRESH_DELAY = 1000L;
 
 	static final long SECONDS = 1L;
 	static final long MINUTES = 60 * SECONDS;

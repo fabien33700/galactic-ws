@@ -42,9 +42,9 @@ public abstract class GatherUnity extends Unity implements GameLoopComponent {
 
 	public boolean notStorable() {
 		switch (extractedResource) {
-			case GOLD: return planet.getAvailableGold() > planet.getTotalGoldStorage();
-			case IRON: return planet.getAvailableIron() > planet.getTotalIronStorage();
-			case PLUTONIUM: return planet.getAvailablePlutonium() > planet.getTotalPlutoniumStorage();
+			case GOLD: return planet.getAvailableGold() > (planet.getTotalGoldStorage() + productionCapacity);
+			case IRON: return planet.getAvailableIron() > (planet.getTotalIronStorage() + productionCapacity);
+			case PLUTONIUM: return planet.getAvailablePlutonium() > (planet.getTotalPlutoniumStorage() + productionCapacity);
 		}
 		return false;
 	}

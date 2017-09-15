@@ -24,14 +24,13 @@ public class InMemoryModel {
 
     private Universe universe;
 
-    private GameLoopThread thread;
-
     private final ModelStorageService storage;
 
     @Autowired
     public InMemoryModel(ModelStorageService storage) {
         this.storage = storage;
     }
+
 
     @PostConstruct
     public void init() {
@@ -50,7 +49,7 @@ public class InMemoryModel {
             loadModel();
         }
 
-        thread = new GameLoopThread(this);
+        GameLoopThread thread = new GameLoopThread(this);
         thread.start();
     }
 
@@ -96,7 +95,4 @@ public class InMemoryModel {
         return universe;
     }
 
-    public GameLoopThread getThread() {
-        return thread;
-    }
 }

@@ -1,6 +1,8 @@
 package imie.tp.galactic.ws.model.general;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -40,6 +42,7 @@ public abstract class Unity extends Identifiable {
 	/**
 	 * Le niveau de l'unité
 	 */
+	@JsonView(Views.Public.class)
 	protected int level = GameConstants.INIT_LEVEL;
 	
 	/**
@@ -98,6 +101,12 @@ public abstract class Unity extends Identifiable {
 		return creationDate
 				.plusSeconds(productionDelay)
 				.isAfter(LocalDateTime.now());
+	}
+
+	@JsonView(Views.Public.class)
+	public Long getRemainingTime() {
+		return isBuilding() ? ChronoUnit.SECONDS.between(
+				creationDate.plusSeconds(productionDelay), LocalDateTime.now()) : 0L;
 	}
 
 	/**
@@ -206,5 +215,7 @@ public abstract class Unity extends Identifiable {
 	public void setPlanet(Planet planet) {
 		this.planet = planet;
 	}
+
+
 
 }
