@@ -45,7 +45,7 @@ public class GameLoopThread extends Thread {
         processUniverse(1);
     }
 
-    private void processUniverse(long offset) {
+    private synchronized void processUniverse(long offset) {
         float ratio = (float) offset * (float) UPDATE_DELAY / (float) (60 * 1000);
 
         inMemoryModel.getUniverse().tick(ratio);

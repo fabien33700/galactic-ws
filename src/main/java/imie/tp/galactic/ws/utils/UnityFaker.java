@@ -1,5 +1,6 @@
 package imie.tp.galactic.ws.utils;
 
+import imie.tp.galactic.ws.model.enums.UnityTypeEnum;
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.general.Unity;
 import imie.tp.galactic.ws.model.unities.ProductionUnity;
@@ -37,5 +38,10 @@ public class UnityFaker {
         Class<? extends Unity> randomClass = FakeUtils.randomItem(unitiesClasses);
 
         return randomClass.getDeclaredConstructor(Planet.class).newInstance(p);
+    }
+
+    public static Unity makeUnity(Planet p, UnityTypeEnum unityType)
+            throws ReflectiveOperationException {
+        return unityType.getClazz().getDeclaredConstructor(Planet.class).newInstance(p);
     }
 }

@@ -6,6 +6,7 @@ import imie.tp.galactic.ws.model.general.Player;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Universe implements Serializable, GameLoopComponent {
 
@@ -13,11 +14,11 @@ public class Universe implements Serializable, GameLoopComponent {
 
     private Set<Player> players;
 
-    private long lastTimestamp = 0L;
+    private long lastTimestamp = System.currentTimeMillis();
 
     public Universe() {
-        this.planets = new HashSet<>();
-        this.players = new HashSet<>();
+        this.planets = new TreeSet<>();
+        this.players = new TreeSet<>();
     }
 
     public Set<Planet> getPlanets() {

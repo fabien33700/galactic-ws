@@ -62,7 +62,5 @@ public class Player extends Identifiable {
 	public void setPlanets(Set<Planet> planets) {
 		this.planets = planets;
 	}
-	
-	
 
 }

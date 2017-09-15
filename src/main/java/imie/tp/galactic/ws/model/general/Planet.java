@@ -60,16 +60,19 @@ public class Planet extends Identifiable {
 	/**
 	 * Stock de fer de la planète
 	 */
+	@JsonView(Views.Resources.class)
 	private int stockIron;
 	
 	/**
 	 * Stock de plutonium de la planète
 	 */
+	@JsonView(Views.Resources.class)
 	private int stockPlutonium;
 	
 	/**
 	 * Stock d'or de la planète
 	 */
+	@JsonView(Views.Resources.class)
 	private int stockGold;
 	
 	/**

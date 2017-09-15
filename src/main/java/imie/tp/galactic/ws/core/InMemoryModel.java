@@ -24,6 +24,8 @@ public class InMemoryModel {
 
     private Universe universe;
 
+    private GameLoopThread thread;
+
     private final ModelStorageService storage;
 
     @Autowired
@@ -48,8 +50,9 @@ public class InMemoryModel {
         } else {
             loadModel();
         }
+        buildModel();
 
-        GameLoopThread thread = new GameLoopThread(this);
+        thread = new GameLoopThread(this);
         thread.start();
     }
 
@@ -67,7 +70,9 @@ public class InMemoryModel {
     }
 
     private void buildModel() {
-        for (int i = 0; i < FakeUtils.randomInt(4, 8); i++) {
+        universe.getPlanets().add(PlanetFaker.makePlanetWithAllGatherUnitiesAndShed());
+
+       for (int i = 0; i < FakeUtils.randomInt(1, 4); i++) {
             Planet p = PlanetFaker.makePlanet();
             Player o = p.getOwner();
             o.getPlanets().add(p);
