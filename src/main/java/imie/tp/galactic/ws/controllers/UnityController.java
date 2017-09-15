@@ -3,7 +3,7 @@ package imie.tp.galactic.ws.controllers;
 import com.fasterxml.jackson.annotation.JsonView;
 import imie.tp.galactic.ws.model.general.Unity;
 import imie.tp.galactic.ws.resources.UnityCreationRequest;
-import imie.tp.galactic.ws.services.UnityService;
+import imie.tp.galactic.ws.services.model.UnityService;
 import imie.tp.galactic.ws.views.Views;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/planet/{id}/unities")
+@RequestMapping("/api/planets/{id}/unities")
 public class UnityController {
 
     private final UnityService unityService;
@@ -28,6 +28,12 @@ public class UnityController {
     @JsonView(Views.Public.class)
     public List<Unity> getAllUnitiesOnPlanet(@PathVariable("id") Long planetId) {
         return unityService.findAllOnPlanet(planetId);
+    }
+
+    @GetMapping("/building")
+    @JsonView(Views.Unity.class)
+    public List<Unity> getAllBuildingUnitiesOnPlanet(@PathVariable("id") Long planetId) {
+        return unityService.findAllBuildingOnPlanet(planetId);
     }
 
     @PutMapping

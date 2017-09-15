@@ -2,7 +2,7 @@ package imie.tp.galactic.ws.core;
 
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.general.Player;
-import imie.tp.galactic.ws.services.ModelStorageService;
+import imie.tp.galactic.ws.services.game.ModelStorageService;
 import imie.tp.galactic.ws.utils.FakeUtils;
 import imie.tp.galactic.ws.utils.PlanetFaker;
 import imie.tp.galactic.ws.utils.UnityFaker;
@@ -16,8 +16,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class InMemoryModel {
@@ -25,6 +23,8 @@ public class InMemoryModel {
     private static final Logger logger = LoggerFactory.getLogger(InMemoryModel.class);
 
     private Universe universe;
+
+    private GameLoopThread thread;
 
     private final ModelStorageService storage;
 
@@ -49,6 +49,9 @@ public class InMemoryModel {
         } else {
             loadModel();
         }
+
+        thread = new GameLoopThread(this);
+        thread.start();
     }
 
     private void loadModel() {
@@ -60,6 +63,7 @@ public class InMemoryModel {
         }
 
         logger.info("Chargement du modèle OK");
+
 
     }
 
@@ -90,5 +94,9 @@ public class InMemoryModel {
 
     public Universe getUniverse() {
         return universe;
+    }
+
+    public GameLoopThread getThread() {
+        return thread;
     }
 }

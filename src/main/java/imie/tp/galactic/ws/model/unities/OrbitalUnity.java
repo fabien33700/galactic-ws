@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonView;
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.general.Unity;
-import imie.tp.galactic.ws.services.TravelService;
+import imie.tp.galactic.ws.services.game.TravelService;
 import imie.tp.galactic.ws.views.Views;
 
 public abstract class OrbitalUnity extends Unity {

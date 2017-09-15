@@ -2,7 +2,7 @@ package imie.tp.galactic.ws.controllers;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import imie.tp.galactic.ws.model.general.Planet;
-import imie.tp.galactic.ws.services.PlanetService;
+import imie.tp.galactic.ws.services.model.PlanetService;
 import imie.tp.galactic.ws.views.Views;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +29,12 @@ public class PlanetController {
     @GetMapping("/{id}")
     @JsonView(Views.ShowOnePlanet.class)
     public Planet getPlanet(@PathVariable Long id) {
+        return planetService.findById(id);
+    }
+
+    @GetMapping("/{id}/resources")
+    @JsonView(Views.Resources.class)
+    public Planet getPlanetResources(@PathVariable Long id) {
         return planetService.findById(id);
     }
 }

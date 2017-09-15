@@ -5,6 +5,7 @@ public interface Views {
     interface Planet extends Public {}
     interface ShowAllPlanets extends Planet {}
     interface ShowOnePlanet extends Planet {}
+    interface Resources {}
     interface Player extends Public {}
     interface UnityType extends Public {}
     interface Unity extends Public {}

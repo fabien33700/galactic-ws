@@ -1,4 +1,4 @@
-package imie.tp.galactic.ws.services;
+package imie.tp.galactic.ws.services.model;
 
 import imie.tp.galactic.ws.core.InMemoryModel;
 import imie.tp.galactic.ws.exceptions.ResourceNotFoundException;
@@ -27,7 +27,6 @@ public class PlanetService implements ResourceService {
     }
 
     public Planet findById(final Long id) throws ResourceNotFoundException{
-        logger.warn("{}", inMemoryModel);
         return inMemoryModel.getUniverse().getPlanets().stream()
                 .filter(p -> p.getId().equals(id))
                 .findFirst()

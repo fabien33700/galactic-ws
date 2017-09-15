@@ -1,4 +1,4 @@
-package imie.tp.galactic.ws.services;
+package imie.tp.galactic.ws.services.game;
 
 import java.time.LocalDateTime;
 

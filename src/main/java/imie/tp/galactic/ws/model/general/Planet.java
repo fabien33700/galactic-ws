@@ -2,8 +2,14 @@ package imie.tp.galactic.ws.model.general;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import imie.tp.galactic.ws.model.constants.GameConstants;
+import imie.tp.galactic.ws.model.enums.UnityTypeEnum;
 import imie.tp.galactic.ws.model.identity.Identifiable;
+import imie.tp.galactic.ws.model.unities.terrestrial.shed.GoldShed;
+import imie.tp.galactic.ws.model.unities.terrestrial.shed.IronShed;
+import imie.tp.galactic.ws.model.unities.terrestrial.shed.PlutoniumShed;
 import imie.tp.galactic.ws.views.Views;
 
 public class Planet extends Identifiable {
@@ -36,19 +42,19 @@ public class Planet extends Identifiable {
 	/**
 	 * Fer disponible
 	 */
-    @JsonView(Views.Public.class)
+    @JsonView({Views.Public.class, Views.Resources.class})
 	private int availableIron;
 	
 	/**
 	 * Plutonium disponible
 	 */
-    @JsonView(Views.Public.class)
+    @JsonView({Views.Public.class, Views.Resources.class})
 	private int availablePlutonium;
 	
 	/**
 	 * Or disponible
 	 */
-    @JsonView(Views.Public.class)
+    @JsonView({Views.Public.class, Views.Resources.class})
 	private int availableGold;
 	
 	/**
@@ -210,5 +216,42 @@ public class Planet extends Identifiable {
 
 	public void setOwner(Player owner) {
 		this.owner = owner;
+	}
+
+	@JsonIgnore
+	public long getUnitiesCount(UnityTypeEnum unityType) {
+		return unities.stream()
+				.filter(u -> u.getClass().isInstance(unityType.getClazz()))
+				.count();
+	}
+
+	public long getTotalGoldStorage() {
+		return GameConstants.Planet.INIT_GOLD_STORAGE +
+				unities.stream()
+				.filter(u -> u instanceof GoldShed)
+				.map(u -> (GoldShed) u)
+				.map(GoldShed::getStorageCapacity)
+				.mapToLong(Long::valueOf)
+				.sum();
+	}
+
+	public long getTotalIronStorage() {
+		return GameConstants.Planet.INIT_IRON_STORAGE +
+				unities.stream()
+				.filter(u -> u instanceof IronShed)
+				.map(u -> (IronShed) u)
+				.map(IronShed::getStorageCapacity)
+				.mapToLong(Long::valueOf)
+				.sum();
+	}
+
+	public long getTotalPlutoniumStorage() {
+		return GameConstants.Planet.INIT_PLUT_STORAGE +
+				unities.stream()
+				.filter(u -> u instanceof PlutoniumShed)
+				.map(u -> (PlutoniumShed) u)
+				.map(PlutoniumShed::getStorageCapacity)
+				.mapToLong(Long::valueOf)
+				.sum();
 	}
 }

@@ -1,4 +1,4 @@
-package imie.tp.galactic.ws.services;
+package imie.tp.galactic.ws.services.model;
 
 import imie.tp.galactic.ws.model.general.UnityType;
 import imie.tp.galactic.ws.model.unities.gather.GoldMine;

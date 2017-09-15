@@ -6,6 +6,7 @@ import imie.tp.galactic.ws.model.constants.GameConstants;
 import imie.tp.galactic.ws.model.enums.ResourceEnum;
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.unities.GatherUnity;
+import imie.tp.galactic.ws.utils.MathUtils;
 
 public class IronMine extends GatherUnity {
 
@@ -28,4 +29,12 @@ public class IronMine extends GatherUnity {
 		this.name = "Mine de fer";
 	}
 
+	@Override
+	public void tick(float ratio) {
+		if (!canExtract()) return;
+		int productAmount = MathUtils.truncate(productionCapacity * ratio);
+
+		planet.setAvailableIron(planet.getAvailableIron() + productAmount);
+		planet.setStockIron(planet.getStockIron() - productAmount);
+	}
 }

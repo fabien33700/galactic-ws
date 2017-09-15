@@ -1,4 +1,4 @@
-package imie.tp.galactic.ws.services;
+package imie.tp.galactic.ws.services.model;
 
 import imie.tp.galactic.ws.core.InMemoryModel;
 import imie.tp.galactic.ws.exceptions.InternalServerException;
@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UnityService implements ResourceService {
@@ -24,6 +25,12 @@ public class UnityService implements ResourceService {
 
     public List<Unity> findAllOnPlanet(Long planetId) {
         return planetService.findById(planetId).getUnities();
+    }
+
+    public List<Unity> findAllBuildingOnPlanet(Long planetId) {
+        return planetService.findById(planetId).getUnities().stream()
+                .filter(Unity::isBuilding)
+                .collect(Collectors.toList());
     }
 
     public Long createUnityOnPlanet(Long planetId, UnityTypeEnum resource) {
@@ -48,4 +55,6 @@ public class UnityService implements ResourceService {
     public InMemoryModel getModel() {
         return inMemoryModel;
     }
+
+
 }

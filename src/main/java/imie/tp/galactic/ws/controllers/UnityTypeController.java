@@ -1,7 +1,7 @@
 package imie.tp.galactic.ws.controllers;
 
 import imie.tp.galactic.ws.model.general.UnityType;
-import imie.tp.galactic.ws.services.UnityTypeService;
+import imie.tp.galactic.ws.services.model.UnityTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

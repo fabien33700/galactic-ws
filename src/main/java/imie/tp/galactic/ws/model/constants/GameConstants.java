@@ -4,10 +4,18 @@ public class GameConstants {
 
 	public static final int INIT_LEVEL = 1;
 
-	public static final long SECONDS = 1L;
-	public static final long MINUTES = 60 * SECONDS;
-	public static final long HOURS = 60 * MINUTES;
-	public static final long DAYS = 24 * HOURS;
+	public static final long REFRESH_DELAY = 5000L;
+
+	static final long SECONDS = 1L;
+	static final long MINUTES = 60 * SECONDS;
+	static final long HOURS = 60 * MINUTES;
+	static final long DAYS = 24 * HOURS;
+
+	public static class Planet {
+		public static final int INIT_GOLD_STORAGE = 2000;
+		public static final int INIT_IRON_STORAGE = 3000;
+		public static final int INIT_PLUT_STORAGE = 1500;
+	}
 	
 	public static class IronMine {
 
@@ -17,7 +25,7 @@ public class GameConstants {
 		public static final int IRON_COST = 350;
 		public static final int PLUTONIUM_COST = 100;
 		public static final int GOLD_COST = 250;
-		public static final double INIT_CAPACITY = 1.5d;
+		public static final float INIT_CAPACITY = 500f;
 		
 	}
 	
@@ -29,7 +37,7 @@ public class GameConstants {
 		public static final int IRON_COST = 450;
 		public static final int PLUTONIUM_COST = 100;
 		public static final int GOLD_COST = 400;
-		public static final double INIT_CAPACITY = 0.5d;
+		public static final float INIT_CAPACITY = 200f;
 		
 	}
 	
@@ -41,7 +49,7 @@ public class GameConstants {
 		public static final int IRON_COST = 450;
 		public static final int PLUTONIUM_COST = 100;
 		public static final int GOLD_COST = 250;
-		public static final double INIT_CAPACITY = 1d;
+		public static final float INIT_CAPACITY = 300f;
 		
 	}
 	

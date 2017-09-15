@@ -3,7 +3,7 @@ package imie.tp.galactic.ws.controllers;
 import com.fasterxml.jackson.annotation.JsonView;
 import imie.tp.galactic.ws.model.general.Player;
 import imie.tp.galactic.ws.resources.PlayerCreationRequest;
-import imie.tp.galactic.ws.services.PlayerService;
+import imie.tp.galactic.ws.services.model.PlayerService;
 import imie.tp.galactic.ws.views.Views;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +18,12 @@ import java.util.Set;
 @RequestMapping("/api/players")
 public class PlayerController {
 
+    private final PlayerService playerService;
+
     @Autowired
-    private PlayerService playerService;
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
+    }
 
     @GetMapping
     @JsonView(Views.Player.class)

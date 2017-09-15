@@ -20,5 +20,11 @@ public abstract class StorageShed extends TerrestrialUnity {
 		this.storageCapacity = storageCapacity;
 	}
 
+	public ResourceEnum getStoredResource() {
+		return storedResource;
+	}
 
+	public int getStorageCapacity() {
+		return storageCapacity;
+	}
 }

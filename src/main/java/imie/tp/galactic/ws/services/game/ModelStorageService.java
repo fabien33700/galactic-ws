@@ -1,4 +1,4 @@
-package imie.tp.galactic.ws.services;
+package imie.tp.galactic.ws.services.game;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,6 @@ public class ModelStorageService {
     private Logger logger = LoggerFactory.getLogger(ModelStorageService.class);
 
     public void save(Object model) {
-        logger.info("Sauvegarde du modèle");
 
         try (FileOutputStream file = new FileOutputStream("model.ser");
              ObjectOutputStream oos = new ObjectOutputStream(file)) {
@@ -30,7 +29,7 @@ public class ModelStorageService {
              ObjectInputStream ois = new ObjectInputStream(file)) {
             model = ois.readObject();
         } catch (final IOException | ClassNotFoundException e) {
-            logger.error("Erreur chargement modèle : ", e);
+            logger.error("Erreur chargement modèle : ", e.getMessage());
             throw new RuntimeException("Erreur lors du chargement du modèle" + e.getMessage());
         }
         return model;

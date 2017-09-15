@@ -4,6 +4,9 @@ import imie.tp.galactic.ws.model.constants.GameConstants;
 import imie.tp.galactic.ws.model.enums.ResourceEnum;
 import imie.tp.galactic.ws.model.general.Planet;
 import imie.tp.galactic.ws.model.unities.GatherUnity;
+import imie.tp.galactic.ws.utils.MathUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
@@ -27,4 +30,12 @@ public class GoldMine extends GatherUnity {
 		this.name = "Mine d'or";
 	}
 
+	@Override
+	public void tick(float ratio) {
+		if (!canExtract()) return;
+		int productAmount = MathUtils.truncate(productionCapacity * ratio);
+
+		planet.setAvailableGold(planet.getAvailableGold() + productAmount);
+		planet.setStockGold(planet.getStockGold() - productAmount);
+	}
 }
